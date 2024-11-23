@@ -16,7 +16,7 @@ try: #intentamos una conexion, si no hay la crea
         )
     """)
     #blob (binary large object), almacena grandes cantidades de datos binarios, como imagenes
-    connection.commit()
+    connection.commit()#guarda los cambios en la bd
     connection.close() # cierra el archivo
 
 except Exception as ex:

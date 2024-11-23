@@ -17,6 +17,11 @@ def SaveToBD(nombre, original, R, G, B, Gris):
     connection.commit()#guarda los cambios en la bd
     connection.close() #cierra la conexion de la bd
 
+def image_to_bytes(img): 
+    img_byte_arr = io.BytesIO() #crea un objeto BytesID para almacenar los bytes de la imagen
+    img.save(img_byte_arr, format='JPEG') # guarda el objeto en formato jpg
+    return img_byte_arr.getvalue() #devuelve los bytes de la imagen
+    
 #define la ruta en la aplicación web que responde a las solicitudes POST en la url
 @app.route('/upload', methods=['POST']) 
 def ChangeImage():
@@ -31,12 +36,6 @@ def ChangeImage():
 
     r, g, b = image.split() #divide la imagen en los componentes rgb
     gris = image.convert("L") #convierte la imagen en escala de colores grises
-
-    def image_to_bytes(img): 
-        img_byte_arr = io.BytesIO() #crea un objeto BytesID para almacenar los bytes de la imagen
-        img.save(img_byte_arr, format='JPEG') # guarda el objeto en formato jpg
-        return img_byte_arr.getvalue() #devuelve los bytes de la imagen
-    
     R = image_to_bytes(r)       #convierte el canal rojo de la imagen en bytes           
     G = image_to_bytes(g)       #convierte el canal verde de la imagen en bytes
     B = image_to_bytes(b)       #convierte el canal azul de la imagen en bytes

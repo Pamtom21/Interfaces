@@ -18,7 +18,6 @@ def send_image(image):
         else:
             print(f"Error al enviar '{name}': {response.json()}")
 
-
 if __name__ == '__main__': #inicia un bucle 
     i = 0 #iniciamos en 0
     for image_name in os.listdir(images): #devuelve una lista con los nombres de los archivos del directorio images.
