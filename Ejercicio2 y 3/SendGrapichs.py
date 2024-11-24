@@ -1,6 +1,6 @@
 import telepot as tl
 import chatid
-token = "7665277392:AAHRRlC_5ZhdaQh-VqtvyazJE7l2Mheaho4"
+token = chatid.TOKEN
 
 id = chatid.get_updates()
 

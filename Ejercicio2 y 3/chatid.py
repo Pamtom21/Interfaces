@@ -1,9 +1,11 @@
 import telepot
 import time
-TOKEN = '7665277392:AAHRRlC_5ZhdaQh-VqtvyazJE7l2Mheaho4'
+from dotenv import load_dotenv
+import os
+load_dotenv()
+TOKEN = os.getenv("twt_token")
 
 bot = telepot.Bot(TOKEN)
-
 
 def get_updates():
     try:
