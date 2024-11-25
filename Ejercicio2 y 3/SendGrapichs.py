@@ -2,9 +2,9 @@ import telepot as tl
 import chatid
 token = chatid.TOKEN
 
-id = chatid.get_updates()
+id = chatid.get_updates() # esta es la id que se obtiene en el codigo de chatid
 
-Bot = tl.Bot(token)
+Bot = tl.Bot(token) # se inicializa el bot
 def enviar():
-    with open('grafico.png', 'rb') as graf:
+    with open('grafico.png', 'rb') as graf:# se abre la imagen y se envia
         Bot.sendPhoto(id, graf)
