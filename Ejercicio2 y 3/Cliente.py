@@ -34,7 +34,7 @@ def generate():
     return dMP_data
 
 if __name__ == '__main__':
-    vaciar.vacio
+    vaciar.borrar()
     for k in range(100):
         data = generate()  # Genera los datos aleatorios
         data_json = json.dumps(data)  # Convierte los datos a formato JSON
@@ -43,9 +43,9 @@ if __name__ == '__main__':
         
         # Enviar la solicitud POST con los datos JSON y la cabecera adecuada
         response = requests.post(url, data=data_json, headers={'Content-Type': 'application/json'})
-        tl.sleep(1)
+        tl.sleep(0.5)
         # Verifica si la solicitud fue exitosa
         if response.status_code == 200:
-            print(f"Solicitud {k+1} enviada correctamente.")
+            print(f"JSON {k+1} enviado correctamente.")
         else:
             print(f"Error en la solicitud {k+1}: {response.status_code}")

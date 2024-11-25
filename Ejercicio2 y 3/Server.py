@@ -109,7 +109,7 @@ def get():
 @app.route('/delete_json', methods=['POST'])
 def vaciar():
     delete()
-    return jsonify("Se ha vaciado la base de datos")
+    return jsonify("Se ha vaciado la base de datos"), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
