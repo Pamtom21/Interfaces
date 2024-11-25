@@ -44,10 +44,20 @@ def GetToDb():
         # Devolver los datos recuperados
         return rows
 
+
     except sqlite3.Error as e:
         print(f"Error al obtener de la base de datos: {e}")
         raise
-
+def delete():
+    try:
+        connection = sqlite3.connect("database/contaminacion.db")
+        cursor = connection.cursor()
+        cursor.execute("delete from T_Conta")
+        connection.commit()
+        connection.close()
+    except sqlite3.Error as e:
+        print(e)
+        raise
 # Ruta para subir datos en formato JSON
 @app.route('/upload_json', methods=['POST'])
 def Insert():
@@ -95,6 +105,11 @@ def get():
     except Exception as e:
         print(f"Error al obtener los datos: {e}")
         return jsonify({"message": "Error interno del servidor"}), 500
+
+@app.route('/delete_json', methods=['POST'])
+def vaciar():
+    delete()
+    return jsonify("Se ha vaciado la base de datos")
 
 if __name__ == '__main__':
     app.run(debug=True)

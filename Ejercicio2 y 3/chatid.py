@@ -10,8 +10,8 @@ bot = telepot.Bot(TOKEN)
 def get_updates():
     try:
         updates = bot.getUpdates()
-        time.sleep(5)
-        return updates[0]["message"]["from"]["id"]
+        time.sleep(2)
+        return updates[len(updates)-1]["message"]["from"]["id"]
     except Exception as e:
         print(f"Error al obtener actualizaciones: {e}")
 
