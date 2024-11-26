@@ -12,7 +12,7 @@ def send_image(image):
         files = {'image': (name, img_file, 'image/jpg')} #contiene la imagen
         data = {'nombre': name} # contiene el nombre de la imagen
         response = requests.post(url, files=files, data=data) #envia una solicitud a la url, con la imagen y los datos
-
+    
         if response.status_code == 200: #manejo de errores
             print(f"Imagen '{name}' enviada exitosamente.")
         else:
